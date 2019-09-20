@@ -5,9 +5,17 @@ include("include/header.php");
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,800,900%7cRaleway:300,400,500,600,700" rel="stylesheet">
 <link href="css/contact.css" rel="stylesheet">
+<style>
+
+
+.image{
+background-image: url(images/slide1.jpeg);
+
+}
+</style>
 
 <body>
-    <section class="contact pt-100 pb-100" id="contact">
+    <section class="contact image  pt-100 pb-100" id="contact">
          <div class="container">
             <div class="row">
                <div class="col-xl-6 mx-auto text-center">

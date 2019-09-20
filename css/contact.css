@@ -45,13 +45,14 @@ a {
 	width: 50px;
 	height: 2px;
 	background-color: #FF7200;
+	
 	left: 0;
 	bottom: 0;
 	left: 50%;
 	margin-left: -25px;
 }
 .contact {
-	background-image: url("http://infinityflamesoft.com/html/abal-preview/assets/img/contact_back.jpg");
+	background-image: url("images/slide.jpeg");
 	background-size: cover;
 	background-position: center;
 	background-attachment: fixed;

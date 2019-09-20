@@ -13,6 +13,7 @@
    <!-- Custom styles for this template -->
     <link href="css/carousel.css" rel="stylesheet">
     <link href="css/admission.css" rel="stylesheet">
+    <link href="css/result.css" rel="stylesheet">
 
       <style>
       .bd-placeholder-img {
@@ -22,6 +23,7 @@
         -moz-user-select: none;
         -ms-user-select: none;
         user-select: none;
+        
       }
 
       @media (min-width: 768px) {
@@ -30,7 +32,7 @@
         }
       }
           .navitems{
-              background-color:darkgoldenrod;
+              background-color:black;
                     
           }
           
@@ -49,7 +51,10 @@
               color:green !important;
               font-weight: bold;
           }
-         
+          .navbar-brand img {
+          width:100px;
+              height:40px;
+          }
      </style>
       
     </head>
@@ -61,7 +66,7 @@
         
           <!-- Navbar start here-->
           <nav class="navbar navbar-expand-md navbar-dark fixed-top navitems">
-            <a class="navbar-brand" href="#"><img src="images/"350*150 ></a>
+            <a class="navbar-brand" href="#"><img src="images/logo.jpeg"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -80,6 +85,7 @@
                   <a class="nav-link" href="contact.php">
                     contact us </a>
                   </li>
+                  
                  <li class="nav-item">
                   <a class="nav-link" href="result.php">
                 Result </a>
@@ -87,5 +93,11 @@
                 </ul>
               
               </div>
+              
+                <form class="form-inline mt-2 mt-md-0">
+       
+        <button class="  my-2 my-sm-0" type="submit" style="background-color:black;color:white;  "><a href="admin../login.php">LOG IN</a></button>
+      </form>
+              
         </nav>
       </header>
