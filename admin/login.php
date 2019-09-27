@@ -6,12 +6,14 @@ if(isset($_POST['login']))
 {
     $name=$_POST['name'];
     $password=$_POST['password'];
-    
+
      $select="SELECT * FROM `accounts` where `username`='$name' AND `password`='$password'";
     
      $query=mysqli_query($conn,$select);
     
     $row=mysqli_fetch_assoc($select);
+    
+    $usertype=$row['usertype'];
     
     $count=mysqli_num_rows($query);
     
@@ -24,19 +26,36 @@ if(isset($_POST['login']))
                    // assign username to session variable
 
                 $_SESSION['name']=$name;
+      
+      if('$usertype'==`admin`){
 
                 header("location:index.php?msg=User login Successfully");
-                 
-
-
-             }else
+            
+             }
+        
+        if('$usertype'==`teacher`)
+        {
+            header("location:login.php");
+            
+        }
+        
+        if('$usertype'==`student`)
+        {
+            header("location:register.php");
+            
+        }
+        
+       }
+    
+    
+        else
              {
 
                   $error="Username & Password is incorrect";
              }
     
+
 }
-    
 ?>
 
 <section class="content" style="height:520px;">
@@ -90,7 +109,7 @@ if(isset($_POST['login']))
 
     </div>
 </section>
-</div>
+
 <?php
 include("footer.php");
 ?>
