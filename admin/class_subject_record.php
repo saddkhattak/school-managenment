@@ -1,80 +1,159 @@
 <?php
-session_start();
-include("db.php");
-include("header.php");
-include("sidebar.php");
-
-$select="SELECT * FROM `accounts`";
-
-$query=mysqli_query($conn,$select);
-
-
+      session_start();
+      require_once("db.php");
+//      require_once("header.php");
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>AdminLTE 2 | Data Tables</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.7 -->
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <!-- Google Font -->
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+
+  <header class="main-header">
+    <!-- Logo -->
+    <a href="index2.html" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><b>SIC</span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><b>SIC</b>Dashboard</span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+
+      
+  </header>
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <?php require_once("sidebar.php");?>
+    <!-- /.sidebar -->
+  </aside>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    
+     <div>
+              <?php
+                  if(isset($_GET['msg']))
+                  {
+              ?>
+            <div class="alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h4><i class="icon fa fa-check"></i> Success</h4>
+                  <?php echo $_GET['msg'];?>
+                  
+          </div>
+          <?php }?>
 
+    </div>
+    <section class="content-header">
+     
+      
+    </section>
 
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title"><b>USER ACCOUNTS</b></h3>
+              <h3 class="box-title">All Class and subject assigned Name</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Sr NO</th>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>User Type</th>
-                  <th>Action</th>
+                  <th>Sr.NO</th>
+                  <th>Class Name</th>
+                  <th>subject Name</th>
+                 
                 </tr>
                 </thead>
-<?php
-                  
-$i=1;
-while($row=mysqli_fetch_assoc($query))
-{
-                    ?>
                 <tbody>
+                <?php
+
+                      $i=1;
+                      $qry=mysqli_query($conn,"SELECT * FROM `class_subject`") or die(mysqli_error());
+                      while($row=mysqli_fetch_assoc($qry))
+                      {
+
+                        $class_id=$row['class_id'];
+                        $subject_id=$row['subject_id'];
+
+                        // select query to fetch class name from class tabl
+                        $qry1=mysqli_query($conn,"SELECT * FROM `class` WHERE `class_id`='$class_id'") or die(mysqli_error($conn));
+                        $row1=mysqli_fetch_assoc($qry1);
+
+                        // select query to fetch subject name from subject table
+
+      $qry2=mysqli_query($conn,"SELECT * FROM `subject` WHERE `subject_id`='$subject_id'") or die(mysqli_error($conn));
+                        $row2=mysqli_fetch_assoc($qry2);
+
+                ?>
+                    
                 <tr>
                   <td><?php echo $i;?></td>
-                  <td><?php echo $row['username'];?></td>
-                  <td><?php echo $row['email'];?></td>
-                  <td><?php echo $row['usertype'];?></td>
-                
-                    <td>   <a href="delete.php?uid=<?php echo $row ['uid'];?>">delete</a></td>  
-                    
-                
+                  <td><?php echo $row1['class_name'];?></td>
+                  <td><?php echo $row2['subject_name'];?></td>
+                  <td><a href="delete.php?class-subject-id=<?php echo $row['class_subject_id'];?>">Delete</a></td>
                 </tr>
-                    <?php $i++;}?>
-                    <tr>
-                    
-                    <td>Other browsers</td>
-                  <td>All others</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>U</td>
-                </tr>
+
+                <?php $i++;}?>
+               
                 </tbody>
-                
               </table>
             </div>
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
-    </div>
-    </div>
-    
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+  </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <div class="pull-right hidden-xs">
-      <b>Version</b> 2.4.18
-    </div>
-    <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE</a>.</strong> All rights
+    <strong>Copyright &copy; SIC .</strong> All rights
     reserved.
   </footer>
 
@@ -271,13 +350,13 @@ while($row=mysqli_fetch_assoc($query))
   <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>
-
+</div>
 <!-- ./wrapper -->
 
 <!-- jQuery 3 -->
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
-<script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- DataTables -->
 <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>

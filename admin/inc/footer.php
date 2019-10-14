@@ -1,12 +1,14 @@
-  <!-- /.content-wrapper -->
-  <footer class="main-footer" >
+<footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>By Saddique Khattak</b>
+     Design and Developed by Isoft Technology
     </div>
-    <strong>Copyright &copy; 2019-2023 <a href="https://adminlte.io">SIC</a>.</strong> All rights
+    <strong>Copyright &copy; <?php echo date("Y");?> <a href="https://adminlte.io">SIC</a>.</strong> All rights
     reserved.
   </footer>
-  
+
+
+<!-- ./wrapper -->
+
 <!-- jQuery 3 -->
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
@@ -44,5 +46,21 @@
 <script src="dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
+<!-- DataTables -->
+<script src="../../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script>
+  $(function () {
+    $('#example1').DataTable()
+    $('#example2').DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : false,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false
+    })
+  })
+</script>
 </body>
 </html>

@@ -10,7 +10,7 @@ if(isset($_POST['submit']))
 {
     $classname=$_POST['class'];
     
-if(!$classname==$empty){
+if(!$classname==""){
 
 
     $insert="INSERT INTO `class` (`class_name`)VALUES('$classname')";
@@ -25,7 +25,7 @@ if(!$classname==$empty){
 }
     else{
 
-$empty= "please enter the class name ";    
+$empty= "please enter the class name  ";    
 
    }   
 
@@ -33,7 +33,7 @@ $empty= "please enter the class name ";
 ?>
 
     <!-- Main content -->
-    <section class="content" style="height:500px; ">
+    <section class="content" style="height:500px; margin-left:250px; ">
       
 
           <?php 
@@ -45,8 +45,7 @@ $empty= "please enter the class name ";
           <div class="alert alert-success alert-dismissible" >
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                 <h4><i class="icon fa fa-check"></i>Success</h4>
-                The Record Is Inserted Sucessfully<a href="login.php"><button style="margin-left:20px;"class="btn btn-outline-success my-2 my-sm-0" type="submit">login</button></a>
-
+                
                   <?php echo $success;?>
         </div>
 
@@ -60,15 +59,17 @@ $empty= "please enter the class name ";
 
           <div class="alert alert-danger alert-dismissible" >
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <h4><i class="icon fa fa-check"></i>Success</h4>
-                The Record Is Inserted Sucessfully<a href="login.php"><button style="margin-left:20px;"class="btn btn-outline-success my-2 my-sm-0" type="submit">login</button></a>
+                <h4><i class="icon fa fa-check">
+                    </i>
+              </h4>
+              
 
                   <?php echo $empty;?>
         </div>
 
           <?php }?>
 
-       <div class="col-md-9" style="margin-top:10px;margin-left:220px;">
+       <div class="col-md-10" style="margin-top:50px;margin-left:20px;">
           <!-- Horizontal Form -->
           <div class="box box-info">
             <div class="box-header with-border">

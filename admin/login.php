@@ -1,115 +1,116 @@
 <?php
-include("db.php");
-include("header.php");
+    require_once("db.php");
+    require_once("header.php");
 
-if(isset($_POST['login']))
-{
-    $name=$_POST['name'];
-    $password=$_POST['password'];
+    // login code
 
-     $select="SELECT * FROM `accounts` where `username`='$name' AND `password`='$password'";
-    
-     $query=mysqli_query($conn,$select);
-    
-    $row=mysqli_fetch_assoc($select);
-    
-    $usertype=$row['usertype'];
-    
-    $count=mysqli_num_rows($query);
-    
-    if($count==1)
-    {
+      if(isset($_POST['login']))
+      {
+            $username=$_POST['username'];
+            $password=$_POST['password'];
+
+            //query to fetch record
+            $sql=mysqli_query($conn,"SELECT * FROM `accounts` where `username`='$username' AND `password`='$password'") or die(mysqli_error($conn));
+            $row=mysqli_fetch_assoc($sql);
+
+            // count fuction to check fetch record
+             $count=mysqli_num_rows($sql);
+
+
+             if($count==1)
+             {
+                  session_start();
+            $username=$row['username'];
+            $usertype=$row['usertype'];
+
         
-        session_start();
-        
-          $name=$row['name'];
                    // assign username to session variable
 
-                $_SESSION['name']=$name;
-      
-      if('$usertype'==`admin`){
+                $_SESSION['username']=$username;
+                $_SESSION['usertype']=$usertype;
+                 
+               if($usertype=="admin")
+               {
+                 header("Location:index.php?msg=User login Successfully");
+               }
 
-                header("location:index.php?msg=User login Successfully");
-            
-             }
-        
-        if('$usertype'==`teacher`)
-        {
-            header("location:login.php");
-            
-        }
-        
-        if('$usertype'==`student`)
-        {
-            header("location:register.php");
-            
-        }
-        
-       }
-    
-    
-        else
+               if($usertype=="student")
+               {
+                 header("Location:index.php?msg=User login Successfully");
+               }
+                if($usertype=="teacher")
+               {
+                 header("Location:index.php?msg=User login Successfully");
+               }
+               
+                 
+
+
+             }else
              {
 
                   $error="Username & Password is incorrect";
              }
+           
+
+      }
     
 
-}
 ?>
+  
+  <!-- Content Wrapper. Contains page content -->
+ 
+    
 
-<section class="content" style="height:520px;">
- <div class="col-md-9" style="margin-top:150px; margin-left:200px;">
+    <!-- Main content -->
+    <section class="content" style="height:500px;">
+      
+          
+
+       <div class="col-md-9" style="margin-top:150px;margin-left:150px;">
           <!-- Horizontal Form -->
           <div class="box box-info">
-                <div style="color:red;font-size:16px;text-align:center"><?php if(isset($error)) { echo $error;}?></div>
+              <div style="color:red;font-size:16px;text-align:center"><?php if(isset($error)) { echo $error;}?></div>
             <div class="box-header with-border">
-              <h3 class="box-title">Enter Your UserName And Password </h3>
+              <h3 class="box-title">Enter Your UserName and Password</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
             <form class="form-horizontal" method="post" action="">
               <div class="box-body">
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">UserName</label>
+                  <label for="inputEmail3" class="col-sm-2 control-label">Username</label>
 
                   <div class="col-sm-10">
-                    <input type="text" name="name" class="form-control" id="inputEmail3" placeholder="Email">
+                    <input type="text" class="form-control" name="username" id="inputEmail3" placeholder="Username">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
 
                   <div class="col-sm-10">
-                    <input type="password" name="password" class="form-control" id="inputPassword3" placeholder="Password">
+                    <input type="password" class="form-control" name="password" id="inputPassword3" placeholder="Password">
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="col-sm-offset-2 col-sm-10">
-                    <div class="checkbox">
-                      <label>
-                        <input type="checkbox"> Remember me
-                      </label>
-                    </div>
+                    
                   </div>
                 </div>
               </div>
-              <!-- /.box-body -->
-
-                
-              <!-- /.box-body -->
-              <div class="box-footer">
-                <button type="submit" class="btn btn-default">Cancel</button>
-                <button type="submit" name="login" class="btn btn-info pull-right">Log In</button>
+               <div class="box-footer">
+                <button type="reset" class="btn btn-default">Reset</button>
+                <button type="submit" name="login" class="btn btn-info pull-right">Log in</button>
               </div>
               <!-- /.box-footer -->
             </form>
           </div>
-          <!-- /.box -->
 
-    </div>
-</section>
 
-<?php
-include("footer.php");
-?>
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <?php
+        require_once("footer.php");
+  ?>

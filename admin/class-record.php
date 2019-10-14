@@ -7,7 +7,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title></title>
+  <title>AdminLTE 2 | Data Tables</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -55,8 +55,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
-        </nav>
-      </a>
+
       
   </header>
   <!-- Left side column. contains the logo and sidebar -->
@@ -70,6 +69,17 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
      <div>
+              <?php
+                  if(isset($_GET['msg']))
+                  {
+              ?>
+            <div class="alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h4><i class="icon fa fa-check"></i> Success</h4>
+                  <?php echo $_GET['msg'];?>
+                  
+          </div>
+          <?php }?>
 
     </div>
     <section class="content-header">
@@ -92,7 +102,6 @@
                 <tr>
                   <th>Sr.NO</th>
                   <th>Class Name</th>
-                  <th>Action</th>
                  
                 </tr>
                 </thead>
@@ -107,7 +116,7 @@
                 <tr>
                   <td><?php echo $i;?></td>
                   <td><?php echo $row['class_name'];?></td>
-                  <td><a href="delete.php?class_id=<?php echo $row['class_id'];?>">Delete</a></td>
+                  <td><a href="delete.php?cid=<?php echo $row['class_id'];?>">Delete</a></td>
                 </tr>
 
                 <?php $i++;}?>

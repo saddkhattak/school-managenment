@@ -7,7 +7,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title></title>
+  <title>AdminLTE 2 | Data Tables</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -55,8 +55,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
-        </nav>
-      </a>
+
       
   </header>
   <!-- Left side column. contains the logo and sidebar -->
@@ -70,6 +69,17 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
      <div>
+              <?php
+                  if(isset($_GET['msg']))
+                  {
+              ?>
+            <div class="alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h4><i class="icon fa fa-check"></i> Success</h4>
+                  <?php echo $_GET['msg'];?>
+                  
+          </div>
+          <?php }?>
 
     </div>
     <section class="content-header">
@@ -91,26 +101,46 @@
                 <thead>
                 <tr>
                   <th>Sr.NO</th>
-                  <th>Subject Name</th>
-                  <th>Action</th>
+                  <th>Name</th>
+                  <th>F Name</th>
+                  <th>Class Name</th>
+                  <th>Email</th>
+                  <th>Mobile</th>
+                  <th>Address</th>
+                  <th>Picture</th>
+                   <th>Action</th>
+
                  
                 </tr>
                 </thead>
                 <tbody>
-                <?php
+             <?php
+                  $i=1;
+                  $qry=mysqli_query($conn,"SELECT * FROM `register`") or die(mysqli_error($conn));
+                  while ($row=mysqli_fetch_assoc($qry)) {
 
-                      $i=1;
-                      $qry=mysqli_query($conn,"SELECT * FROM `subject`") or die(mysqli_error());
-                      while($row=mysqli_fetch_assoc($qry))
-                      {
-                ?>
+                    $class_id=$row['class_id'];
+
+                    // query to fetch class Name
+
+                    $qry1=mysqli_query($conn,"SELECT * FROM `class`  where `class_id`='$class_id'") or die(mysqli_error($conn));
+                    $row1=mysqli_fetch_assoc($qry1);
+              ?>
                 <tr>
                   <td><?php echo $i;?></td>
-                  <td><?php echo $row['subject_name'];?></td>
-                  <td><a href="delete.php?subject_id=<?php echo $row['subject_id'];?>">Delete</a></td>
+                  <td><?php echo $row['name'];?></td>
+                  <td><?php echo $row['fname'];?></td>
+                  <td><?php echo $row1['class'];?></td>
+                  <td><?php echo $row['email'];?></td>
+                  <td><?php echo $row['mobile_number'];?></td>
+                  <td><?php echo $row['address'];?></td>
+                  <td><img src="../images/<?php echo $row['images'];?>" width="50" height="50"></td>
+                  <td><a href="edit_student_records.php?sid=<?php echo $row['r_id'];?>"> Edit </a>/ <a href="result.php?std_id=<?php echo $row['r_id'];?>">Reslut</a>/<a href="delete.php?std_id=<?php echo $row['r_id'];?>">Delete</a></td>
                 </tr>
 
                 <?php $i++;}?>
+
+                
                
                 </tbody>
               </table>

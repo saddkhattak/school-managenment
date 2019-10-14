@@ -1,9 +1,12 @@
+
 <!-- Left side column. contains the logo and sidebar -->
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
-       <!-- /.sidebar -->
-        <!-- sidebar menu: : style can be found in sidebar.less -->
+    
+  
+    
+      <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
         <li class="active treeview">
@@ -36,7 +39,7 @@
             <li><a href="subject.php"><i class="fa fa-circle-o"></i> Enter Subject</a></li>
             <li><a href="subject-record.php"><i class="fa fa-circle-o"></i> Subject Details</a></li>
              <li><a href="class-subject.php"><i class="fa fa-circle-o"></i> Select Class-Subject</a></li>
-              <li><a href="class_subject_record.php"><i class="fa fa-circle-o"></i>Class-Subject Details</a></li>
+              <li><a href="class-subject-record.php"><i class="fa fa-circle-o"></i>Class-Subject Details</a></li>
           </ul>
         </li>
 
@@ -119,8 +122,8 @@
 
         </li>
 
-        </ul>
 
+        </ul>
     </section>
- 
+    <!-- /.sidebar -->
   </aside>

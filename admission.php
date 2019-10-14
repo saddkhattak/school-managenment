@@ -1,5 +1,22 @@
 <?php
 include("include/header.php");
+include("admin/db.php");
+//  require_once("admin/inc/db.php");
+
+if(isset($_POST['submit']))
+        {
+              $name=$_POST['name'];
+              $fname=$_POST['fname'];
+              $email=$_POST['email'];
+              $mobile=$_POST['mble'];
+              $address=$_POST['address'];
+              $class=$_POST['class'];
+            
+   mysqli_query($conn,"INSERT INTO `register` (`name`,`fname`,`email`,`mobile_num`,`address`,`class_id`,) VALUES ('$name','$fname','$email','$mobile','$address','$class')") or die(mysqli_error($conn));
+
+              header("Location:admission.php?msg=Registered Successfully");
+
+        }
 ?>
 <style>
 	body{
@@ -41,6 +58,7 @@ include("include/header.php");
     .signup-form{
 		width: 390px;
 		margin: 0 auto;	
+/*        height:3400px;*/
 		padding: 30px 0;	
 	}
     .signup-form form{
@@ -50,6 +68,7 @@ include("include/header.php");
         background: #f0f0f0;
         box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
         padding: 30px;
+        height:900px;
     }
 	.signup-form .form-group{
 		margin-bottom: 20px;
@@ -79,6 +98,7 @@ include("include/header.php");
 		text-decoration: underline;
 	}
 </style>
+<div><?php if(isset($_GET['msg'])){ echo $_GET['msg'];}?></div>
 <div class="signup-form">
     <form method="post" action="">
 		<div class="form-header">
@@ -94,49 +114,79 @@ include("include/header.php");
         	<input type="text" class="form-control" name="fname" required="required">
         </div>
 		<div class="form-group">
-			<label>Admission</label>
-            <input type="text" class="form-control" name="admission" required="required">
+			<label>Email</label>
+            <input type="email" class="form-control" name="email" required="required">
         </div>
+		<div class="form-group">
+			<label>Mobile Number</label>
+            <input type="text" class="form-control" name="mble" required="required">
+        </div>
+        
 		<div class="form-group">
 			<label>Address</label>
-            <input type="text" class="form-control" name="text" required="required">
-        </div>  
-        
-        <div class="form-group">
-                  <label>Select Type</label>
-
-                  <div class="col-sm-12">               
-                    <select class="form-control" name="selecttype">
-                    <option>--Select Type--</option>
-                    <option value="Science">Science</option>
-                    <option value="Art">Art</option>
-                    </select>
-
-                    </div>
+            <input type="text" class="form-control" name="address" required="required">
         </div>
-    
         
-        
-        
-        
-        
-		<div class="form-group">
-			<label>Phone Number</label>
-            <input type="text" class="form-control" name="text" required="required">
-        </div>        
+                    <div class="form-group">
+              <label for="email" class="cols-sm-2 control-label">Select Class for Admission</label>
+              <div class="cols-sm-8">
+                <div class="input-group">
+<!--                  <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->
+                  <select class="form-control" name="class">
+                      <option>--Select Class--</option>
+               
+                <?php
+                            $qry1=mysqli_query($conn,"SELECT * FROM `class`") or die(msyqli_error($conn));
+
+                            while($row1=mysqli_fetch_assoc($qry1))
+                            {
+
+                ?>     
+          <option value="<?php echo $row1['class_id'];?>"><?php echo $row1['class_name'];?></option>
+                  <?php }?>
+                  
+                  </select>
+                  
+                </div>
+              </div>
+                        
+                        
+                        
+              
+                    <div class="form-group">
+              <label for="email" class="cols-sm-2 control-label">Select Type Admission</label>
+              <div class="cols-sm-8">
+                <div class="input-group">
+<!--                  <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->
+                  <select class="form-control" >
+               
+          <option>--Select Type--</option>
+          <option>Science</option>
+          <option>Art</option>
+                
+                  
+                  </select>
+                  
+                </div>
+              </div>
+            
+                        
+                        
+                        <br>
+                        
         <div class="form-group">
 			<label class="checkbox-inline"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
 		</div>
 		<div class="form-group">
-			<button type="submit" class="btn btn-primary btn-block btn-lg">Sign Up</button>
+			<button type="submit"  name="submit" class="btn btn-primary btn-block btn-lg">Sign Up</button>
 		</div>	
-    </form>
     
+   </div>
 </div>
-
+    </form>
 
 
 <?php
-include("include/footer.php");
+include("admin/footer.php");
 
 ?>

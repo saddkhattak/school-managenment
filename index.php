@@ -1,6 +1,14 @@
 <?php
       require_once("include/header.php");
 ?>
+<style>
+    .image {
+        margin-top: 100px;
+    
+    }
+
+
+</style>
           <!--Slider Stat Here-->
 <main role="main">
 
@@ -16,10 +24,12 @@
         <!--<svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></svg>-->
         <div class="container">
           <div class="carousel-caption text-left">
-            <h1>Breaking News</h1>
+<!--            <h1>Breaking News</h1>-->
+<!--
             <p>Islamia College Student got first position in the ETEA medical Entrance Test 2019 (2019-09-04 ) 
 </p>
-            <p><a class="btn btn-lg btn-primary" href="#" role="button">View More...</a></p>
+-->
+<!--            <p><a class="btn btn-lg btn-primary" href="#" role="button">View More...</a></p>-->
           </div>
         </div>
       </div>
@@ -27,20 +37,25 @@
        <img src="images/slide2.jpeg" class="bd-placeholder-img" width="100%" height="100%">
         <div class="container">
           <div class="carousel-caption">
+<!--
             <h1>Another example headline.</h1>
             <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
             <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
           </div>
+-->
         </div>
       </div>
       <div class="carousel-item">
        <img src="images/slide3.jpeg" class="bd-placeholder-img" width="100%" height="100%">
         <div class="container">
           <div class="carousel-caption text-right">
+
             <h1>One more for good measure.</h1>
             <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
             <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
-          </div>
+            </div>
+            
+</div>
         </div>
       </div>
     </div>
@@ -54,7 +69,7 @@
     </a>
   </div>
 
-      <!-- SLider End Here-->
+      <!-- SLider End Here
 
 
         <!--Messages Section Start Here-->
@@ -97,10 +112,11 @@
     <div class="row featurette">
       <div class="col-md-7">
         <h2 class="featurette-heading">History </h2>
-        <p class="lead">Islamia College Student got first position in the ETEA medical Entrance Test 2019 (2019-09-04 )Islamia College Student got first position in the ETEA medical Entrance Test 2019 (2019-09-04 )Islamia College Student got first position in the ETEA medical Entrance Test 2019 (2019-09-04 )Islamia College Student got first position in the ETEA medical Entrance Test 2019 (2019-09-04 )</p>
+        <p class="lead">Launched on February 2, 1996  , Paradise Public School Karak was inaugurated on March 15, 1996. The School commenced with a mere 21 students who were led to school by eager and enthusiastic parents. The Managing Director of PPS Mr. Hidayat khan Khattak laid the foundation stone in the presence of elders of area and Chairman Gul Faraz khan Khattak. The PPS is headed by Mr. Muhammad Luqman Khattak under whose stewardship the school has grown up from strength to strength. 
+        Affiliated to BISE Kohat, Paradise Public School Karak provides holistic education and endeavors to prepare the citizens of the future. We believe that objectives of education include the formation habits of truthfulness, industry, spirit of enquiry, resilience, tolerance, self-confidence and humility. True education helps build a society which is equibtable and fair. We  endeavor to make students cognizant of their role as instruments of social transformation</p>
       </div>
-      <div class="col-md-5">
-       <img src="images/vc.jpg" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid" width="600" height="600">
+      <div class="col-md-5 image">
+       <img src="images/vc.jpg" class="bd-placeholder-img bd-placeholder-img-lg featurette-image " width="600" height="500">
       </div>
     </div>
 
@@ -113,7 +129,9 @@
     <div class="row featurette">
       <div class="col-md-7 order-md-2">
         <h2 class="featurette-heading"> Our Mission</h2>
-        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        <p class="lead"> '𝙎𝙚𝙧𝙫𝙞𝙘𝙚 𝘽𝙚𝙛𝙤𝙧𝙚 𝙎𝙚𝙡𝙛' is the ethos deeply ingrained in every despite. It signifies that the happiness,safety and comfort of others mean more to us than our own happiness,safety and comfort. The motto reminds us constantly that giving is nobler than receiving and that we give without expecting anything in return.
+Paradise
+Educating the nation since 1996</p>
       </div>
       <div class="col-md-5 order-md-1">
         <img src="images/vc.jpg" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid " width="600" height="600">

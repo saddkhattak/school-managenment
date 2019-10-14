@@ -7,7 +7,11 @@
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.5">
     <title>School Web Side</title>
+      <link href="images/logo.jpeg" rel="icon">
         <!-- Bootstrap core CSS -->
+       <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" crossorigin="anonymous"> 
     <link href="css/bootstrap.min.css" rel="stylesheet">
      
    <!-- Custom styles for this template -->
@@ -45,6 +49,9 @@
     }
     .lead{
         margin-top: 50px;
+          color: #094359;
+        font-size: 22px;
+        text-align: justify;
         
     }
           .active{
@@ -54,6 +61,14 @@
           .navbar-brand img {
           width:100px;
               height:40px;
+          }
+          body{
+               font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif !important;
+                background: #fff;
+/*             max-width:1100px;*/
+/*              margin: auto;*/
+   
+              
           }
      </style>
       
@@ -96,7 +111,7 @@
               
                 <form class="form-inline mt-2 mt-md-0">
        
-        <button class="  my-2 my-sm-0" type="submit" style="background-color:black;color:white;  "><a href="admin../login.php">LOG IN</a></button>
+        <button class="my-2 my-sm-0" type="submit" style="background-color:black;color:white; border:1px solid black; "><a href="admin../login.php" style="color:white; ">LOG IN</a></button>
       </form>
               
         </nav>

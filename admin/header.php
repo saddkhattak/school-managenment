@@ -64,11 +64,3 @@
         </div>
     </nav>
   </header>
-<!--
-    
-    <?php
-    include("include/sidebar.php");
-    
-    
-    ?>
-    -->
