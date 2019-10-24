@@ -1,5 +1,23 @@
 <?php
+
+include("admin/db.php");
 include("include/header.php");
+if(isset($_POST['submit']))
+{
+    $name=$_POST['name'];
+    $email=$_POST['email'];
+    $messege=$_POST['messege'];
+    
+    $insert="INSERT INTO `contactus` (`name`,`email`,`messege`) VALUES('$name','$email','$messege')";
+    
+    $query=mysqli_query($conn,$insert);
+    
+    $success="The Messege Is Successfully Send";
+    
+    
+}
+
+
 ?>
 
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -15,6 +33,21 @@ background-image: url(images/slide1.jpeg);
 </style>
 
 <body>
+         <?php 
+                if(isset($success))
+                {
+
+          ?>
+
+          <div class="alert alert-success alert-dismissible" >
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h4><i class="icon fa fa-check"></i>Success</h4>
+                
+                  <?php echo $success;?>
+        </div>
+
+          <?php }?>
+        
     <section class="contact image  pt-100 pb-100" id="contact">
          <div class="container">
             <div class="row">
@@ -25,19 +58,20 @@ background-image: url(images/slide1.jpeg);
                   </div>
                </div>
             </div>
+             
             <div class="row text-center">
                   <div class="col-md-8">
-                     <form action="#" class="contact-form">
+                     <form action="" method="post" class="contact-form">
                         <div class="row">
                            <div class="col-xl-12">
-                              <input type="text" placeholder="name">
+                              <input type="text" placeholder="name" name="name">
                            </div>
                            <div class="col-xl-12">
-                              <input type="text" placeholder="email">
+                              <input type="text" placeholder="email" name="email">
                            </div>
                            <div class="col-xl-12">
-                              <textarea placeholder="message" cols="30" rows="10"></textarea>
-                              <input type="submit" value="send message">
+                              <textarea name="messege" placeholder="message" cols="30" rows="10"></textarea>
+                              <input type="submit" name="submit" value="send message">
                            </div>
                         </div>
                      </form>

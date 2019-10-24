@@ -1,23 +1,40 @@
 <?php
+ ob_start();
 include("include/header.php");
 include("admin/db.php");
 //  require_once("admin/inc/db.php");
 
 if(isset($_POST['submit']))
         {
+              $dir="images/";
               $name=$_POST['name'];
               $fname=$_POST['fname'];
               $email=$_POST['email'];
               $mobile=$_POST['mble'];
               $address=$_POST['address'];
               $class=$_POST['class'];
-            
-   mysqli_query($conn,"INSERT INTO `register` (`name`,`fname`,`email`,`mobile_num`,`address`,`class_id`,) VALUES ('$name','$fname','$email','$mobile','$address','$class')") or die(mysqli_error($conn));
+              $image=$_FILES['file']['name'];
+              $tmp_image=$_FILES['file']['tmp_name'];
+
+              if($image!="")
+              {
+                  $fdir=$dir.$image;
+                  move_uploaded_file($tmp_image,$fdir);
+              }
+
+   mysqli_query($conn,"INSERT INTO `register` (`name`,`fname`,`email`,`mobile_number`,`address`,`class_id`,`image`) VALUES ('$name','$fname','$email','$mobile','$address','$class','$image')") or die(mysqli_error($conn));
 
               header("Location:admission.php?msg=Registered Successfully");
 
         }
+
+
+
+
+
+
 ?>
+
 <style>
 	body{
 		color: #999;
@@ -68,7 +85,7 @@ if(isset($_POST['submit']))
         background: #f0f0f0;
         box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
         padding: 30px;
-        height:900px;
+        height:980px;
     }
 	.signup-form .form-group{
 		margin-bottom: 20px;
@@ -100,7 +117,7 @@ if(isset($_POST['submit']))
 </style>
 <div><?php if(isset($_GET['msg'])){ echo $_GET['msg'];}?></div>
 <div class="signup-form">
-    <form method="post" action="">
+    <form method="post" action="" enctype="multipart/form-data">
 		<div class="form-header">
 			<h2>Admission Open</h2>
 			<p>Fill out this form to get new addmission</p>
@@ -171,19 +188,36 @@ if(isset($_POST['submit']))
               </div>
             
                         
+        
                         
-                        <br>
+             <div class="form-group">
+              <label for="email" class="cols-sm-2 control-label">Upload Image</label>
+              <div class="cols-sm-8">
+                <div class="input-group">
+<!--                  <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->
+                  <input  type="file" class="form-control" name="file">
+                    
+                  
+                </div>
+              </div>
+            </div>
+
+
                         
+                        
+                        
+    
         <div class="form-group">
 			<label class="checkbox-inline"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
 		</div>
 		<div class="form-group">
-			<button type="submit"  name="submit" class="btn btn-primary btn-block btn-lg">Sign Up</button>
-		</div>	
+                        <input type="submit" name="submit">                        </div>	
     
    </div>
 </div>
+        
     </form>
+</div>
 
 
 <?php

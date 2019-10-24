@@ -1,13 +1,54 @@
 <?php
+ob_start();
     session_start();
     require_once("db.php");
     require_once("header.php");
     require_once("sidebar.php");
 
+       if(isset($_POST['submit']))
+           
+       {
+            $stdid=$_GET['std_id'];
+           $english=$_POST['english'];
+           $maths=$_POST['maths'];
+           $urdu=$_POST['urdu'];
+           $islamiyat=$_POST['islamiyat'];
+           $pakstudy=$_POST['pakstudy'];
+           $computerscience=$_POST['computerscience'];
+           $biology=$_POST['biology'];
+           $physics=$_POST['physics'];
+           $chemistry=$_POST['chemistry'];
+           
+           
+           $insert="INSERT INTO `results`(`english`,`maths`,`urdu`,`islamiyat`,`pak_study`,`computer_science`,`biology`,`physics`,`chemistry`,`r_id`)VALUES('$english','$maths','$urdu','$islamiyat','$pakstudy','$computerscience','$biology','$physics','$chemistry','$stdid') ";
+           
+           $query=mysqli_query($conn,$insert);
+           
+           $success="The Marks Is Added Sucessfully ";
+            header("Location:result.php?std_id=$stdid&msg=Result Submit Successfully");
+           
+       }
+           
 
-    
 
 ?>
+<div  class="col-md-12" style="margin-left:200px">
+
+ <?php 
+                if(isset($success))
+                {
+
+          ?>
+
+          <div class="alert alert-success alert-dismissible" >
+                <h4><i class="icon fa fa-check"></i>Success </h4>
+                
+                  <?php echo $success;?>
+        </div>
+
+          <?php }?>
+</div>
+
   
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -26,6 +67,7 @@
      
      <div>
 
+         
             <?php
                 if(isset($_GET['std_id']))
                 {
@@ -48,8 +90,13 @@
                     </tr>
 
                      <tr>
+                          <td><strong>Father Name: </strong></td>
+                          <td><?php echo $row['fname'];?></td>
+                    </tr>
+                
+                     <tr>
                           <td><strong>Class Name: </strong></td>
-                          <td><?php echo $row1['class'];?></td>
+                          <td><?php echo $row1['class_name'];?></td>
                     </tr>
 
             </table>
@@ -74,9 +121,11 @@
                   <label for="inputEmail3" class="col-sm-2 control-label">English</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" name="class" id="inputEmail3" placeholder="Enter Your Class">
+                    <input type="text" class="form-control" name="english"  placeholder="Enter Your Marks">
+                      
                   </div>
                 </div>
+                  
                 <div class="form-group">
                   <div class="col-sm-offset-2 col-sm-10">
                   </div>
@@ -86,7 +135,7 @@
                   <label for="inputEmail3" class="col-sm-2 control-label">Maths</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" name="class" id="inputEmail3" placeholder="Enter Your Class">
+                    <input type="text" class="form-control" name="maths" placeholder="Enter Your Marks">
                   </div>
                 </div>
                 <div class="form-group">
@@ -99,7 +148,7 @@
                   <label for="inputEmail3" class="col-sm-2 control-label">Urdu</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" name="class" id="inputEmail3" placeholder="Enter Your Class">
+                    <input type="text" class="form-control" name="urdu"  placeholder="Enter Your Marks">
                   </div>
                 </div>
                 <div class="form-group">
@@ -113,7 +162,7 @@
                   <label for="inputEmail3" class="col-sm-2 control-label">Islamiyat</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" name="class" id="inputEmail3" placeholder="Enter Your Class">
+                    <input type="text" class="form-control" name="islamiyat" placeholder="Enter Your Marks">
                   </div>
                 </div>
                 <div class="form-group">
@@ -126,7 +175,7 @@
                   <label for="inputEmail3" class="col-sm-2 control-label">Pak Study</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" name="class" id="inputEmail3" placeholder="Enter Your Class">
+                    <input type="text" class="form-control" name="pakstudy"  placeholder="Enter Your Marks">
                   </div>
                 </div>
                 <div class="form-group">
@@ -139,14 +188,43 @@
                   <label for="inputEmail3" class="col-sm-2 control-label">Computer Science</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" name="class" id="inputEmail3" placeholder="Enter Your Class">
+                    <input type="text" class="form-control" name="computerscience" placeholder="Enter Your Marks">
                   </div>
                 </div>
+                  
+                  
                 <div class="form-group">
-                  <div class="col-sm-offset-2 col-sm-10">
-                    
+                  <label for="inputEmail3" class="col-sm-2 control-label">Biology</label>
+
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="biology" placeholder="Enter Your Marks">
                   </div>
                 </div>
+                  
+                  
+                  
+                  
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label">Physics</label>
+
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="physics" placeholder="Enter Your Marks">
+                  </div>
+                </div>
+                  
+                  
+                  
+                  
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label">Chemistry</label>
+
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="chemistry" placeholder="Enter Your Marks">
+                  </div>
+                </div>
+                  
+                  
+                  
 
               </div>
                <div class="box-footer">

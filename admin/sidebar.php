@@ -54,20 +54,24 @@
             <li><a href="student_records.php"><i class="fa fa-circle-o"></i> Student Details</a></li>
           </ul>
         </li>
+                    <?php
+               if($_SESSION['usertype']=='admin')
+              {
+          ?>
+
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-edit"></i> <span>Forms</span>
+            <i class="fa fa-edit"></i> <span>News</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="pages/forms/general.html"><i class="fa fa-circle-o"></i> General Elements</a></li>
-            <li><a href="pages/forms/advanced.html"><i class="fa fa-circle-o"></i> Advanced Elements</a></li>
-            <li><a href="pages/forms/editors.html"><i class="fa fa-circle-o"></i> Editors</a></li>
+            <li><a href="news.php"><i class="fa fa-circle-o"></i>Enter News</a></li>
           </ul>
         </li>
-        
+
+          <?php }?>
           <?php
                if($_SESSION['usertype']=='admin')
               {

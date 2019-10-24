@@ -130,11 +130,11 @@
                   <td><?php echo $i;?></td>
                   <td><?php echo $row['name'];?></td>
                   <td><?php echo $row['fname'];?></td>
-                  <td><?php echo $row1['class'];?></td>
+                  <td><?php echo $row1['class_name'];?></td>
                   <td><?php echo $row['email'];?></td>
                   <td><?php echo $row['mobile_number'];?></td>
                   <td><?php echo $row['address'];?></td>
-                  <td><img src="../images/<?php echo $row['images'];?>" width="50" height="50"></td>
+                  <td><img src="../images/<?php echo $row['image'];?>" width="50" height="50"></td>
                   <td><a href="edit_student_records.php?sid=<?php echo $row['r_id'];?>"> Edit </a>/ <a href="result.php?std_id=<?php echo $row['r_id'];?>">Reslut</a>/<a href="delete.php?std_id=<?php echo $row['r_id'];?>">Delete</a></td>
                 </tr>
 
